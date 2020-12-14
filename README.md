@@ -3,7 +3,7 @@ Sentiment Analysis of Reviews from Amazon (acrylic markers/pens)
 # Summary
 
 I am using logistic regression on imbalanced 2 label dataset of Amazon reviews to predict the sentiment of the review (e.g. Positive/Negative) <br>
-balblab
+I add features, tune the model and compare the results at the end
 
 ## Libraries
 ```python
@@ -99,7 +99,7 @@ print(model_simple.predict(vect.transform(['markers are good',
 Output: [1 1] - both strings were predicted as Positive
 
 ## Adding n-grams and Tfidf:
-Adding n-grams to feature to compare word pairs (e.g. "good" and "not good"). Also, getting rid of most frequent words that do not add into quality of prediction (e.g. "you")
+Adding n-grams to feature to compare word pairs (e.g. "good" and "not good"). Also, getting rid of most frequent words that do not add to the quality of prediction (e.g. "you")
 ```python
 # Fit the CountVectorizer to the training data specifiying a minimum 
 # document frequency of 5 and extracting 1-grams and 2-grams
@@ -194,7 +194,7 @@ The above model has strong AUC. However, still, doesn't correctly labels generic
 print(model_w.predict(vect_tfidf.transform(['markers are good',
                                     'markers are not good'])))
 ```
-## CountVectorized parametered LR with weights
+## CountVectorizer with added regularization and weights
 Trying to use CountVectorized parameterd LR with weights, which doesn't take into account same word distributions accross documents comparing to Tfidf
 ```python
 model_w = LogisticRegression(random_state=13,C=80,fit_intercept=True, 
@@ -227,5 +227,14 @@ print(model_w.predict(vect_count.transform(['markers are good',
                                     'markers are not good'])))
 ```
 Output: [1 - 0]
-# Summary
-For handling imbalance dataset weights were added to LR model and further tuning (adding regulazation parameter and CountVectorizer/Tfidf) was needed to get the best results in AUC as well as tests on generic strings
+# Conclusion
+For handling imbalance dataset weights were added to LR model and further tuning (adding regulazation parameter and CountVectorizer/Tfidf) was needed to get the best results in AUC as well as tests on generic strings. <br>
+Comparing the results:
+
+Statistics/Model | Default Model | CountVectorizer with n-grams | Tfidf with n-grams | CountVectorizer with regularization and weights | Tfidf with regularization and weights
+-----------------|------------------|--------------------|----------------|-------|-----
+Accuracy Score | 0.9503404084901882 | 0.9583500200240288 | 0.9427312775330396 | 0.8446135362434922 | 0.8466159391269523
+Area Under Curve | 0.7618616199514456 | 0.7894162436548222| 0.6486592363716619 | 0.8622765393952769 | 0.8981736923416463
+Recall score | 0.9856521739130435 | 0.99 | 0.9978260869565218 | 0.841304347826087 | 0.8369565217391305
+Precision score | 0.9614079728583546 | 0.9656488549618321 | 0.9432799013563502 | 0.9882533197139939 | 0.9958613554061045
+Generic test<br>("markers are good";<br>"markers are not good") | Both predicted as Positive | Both as Predicted positive | Both predicted as Positive | Predicted correctly - Positive, Negative| Both predicted negative
