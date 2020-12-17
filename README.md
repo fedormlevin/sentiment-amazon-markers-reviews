@@ -70,7 +70,7 @@ Confusion Matrix:<br>
 Area Under Curve: 0.7618616199514456<br>
 Recall score: 0.9856521739130435<br>
 Precision score: 0.9614079728583546<br>
-Although the Accuracy Score is high, model is predicting big part of the negative reviews (0) incorrectly (False Positives = 91)<br>
+Although the Accuracy Score is high, almost half of the negative reviews (0) estimated incorrectly (False Positives = 91)<br>
 What are the features with smallest (predicting negatives reviews) and largest (predicting positive) coefficients?
 ```python
 # get the feature names as numpy array
@@ -111,7 +111,7 @@ vect_tfidf = TfidfVectorizer(min_df=7, ngram_range=(1,2),
 X_train_vectorized = vect_count.transform(X_train)
 X_train_vectorized_tfidf = vect_tfidf.transform(X_train)
 ```
-CountVectorizer:
+## CountVectorizer:
 ```python
 model = LogisticRegression()
 model.fit(X_train_vectorized, y_train)
@@ -135,7 +135,7 @@ Confusion Matrix:<br>
 Area Under Curve: 0.7894162436548222<br>
 Recall score: 0.99<br>
 Precision score: 0.9656488549618321<br>
-Tfidf Vectorizer:
+## Tfidf Vectorizer:
 ```python
 model = LogisticRegression()
 model.fit(X_train_vectorized_tfidf, y_train)
