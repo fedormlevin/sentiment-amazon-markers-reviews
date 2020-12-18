@@ -24,7 +24,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix,roc_curve, roc_auc_
 from sklearn.metrics import f1_score
 ```
 ## Dataset
-Removing neutral ratings and select only nessesary columns from the reviews dataset:
+Removing neutral 3-star ratings:
 ```python
 df = resul[resul['Rating'] != 3]
 df['Positively Rated'] = np.where(df['Rating'] > 3, 1, 0)
