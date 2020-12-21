@@ -5,7 +5,7 @@ Sentiment Analysis of Reviews from Amazon (acrylic markers/pens)
 I am using logistic regression on imbalanced 2 label dataset of Amazon reviews to predict the sentiment of the review (e.g. Positive/Negative) <br>
 I add features, tune the model and compare the results at the end
 
-## Libraries
+## Dependencies
 ```python
 import pandas as pd
 import numpy as np
