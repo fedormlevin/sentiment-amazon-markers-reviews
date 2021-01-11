@@ -189,7 +189,9 @@ Confusion Matrix: <br>
 Area Under Curve: 0.9007117634076363<br>
 Recall score: 0.8369565217391305<br>
 Precision score: 0.9963768115942029<br>
+
 ![image info](./true vs predicted labels.png)
+
 The above model has strongest AUC and does predict generic labels correctly
 ```python
 print(model_w.predict(vect_tfidf.transform(['markers are good',
