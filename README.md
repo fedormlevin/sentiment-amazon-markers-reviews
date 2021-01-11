@@ -182,14 +182,15 @@ print(f'Area Under Curve: {roc_auc_score(y_test, predictions_w_idf)}')
 print(f'Recall score: {recall_score(y_test,predictions_w_idf)}')
 print(f'Precision score: {precision_score(y_test,predictions_w_idf)}')
 ```
-Accuracy Score: 0.8466159391269523<br>
-Confusion Matrix:<br>
-[[ 189  -  8]<br>
+Accuracy Score: 0.8470164197036444<br>
+Confusion Matrix: <br>
+[[ 190    7]<br>
  [ 375 1925]]<br>
-Area Under Curve: 0.8981736923416463<br>
+Area Under Curve: 0.9007117634076363<br>
 Recall score: 0.8369565217391305<br>
-Precision score: 0.9958613554061045<br>
-The above model has strong AUC. However, still, doesn't correctly labels generic reveiw reviews "markers are good" and "markers are not good": it assigns Negative label to both reviews caused by our set hight sensitivity to negative class
+Precision score: 0.9963768115942029<br>
+![image info](./true vs predicted labels.png)
+The above model has strongest AUC and does predict generic labels correctly
 ```python
 print(model_w.predict(vect_tfidf.transform(['markers are good',
                                     'markers are not good'])))
@@ -233,8 +234,8 @@ Comparing the results:
 
 Statistics/Model | Default Model | CountVectorizer with n-grams | Tfidf with n-grams | CountVectorizer with regularization and weights | Tfidf with regularization and weights
 -----------------|------------------|--------------------|----------------|-------|-----
-Accuracy Score | 0.9503404084901882 | 0.9583500200240288 | 0.9427312775330396 | 0.8446135362434922 | 0.8466159391269523
-Area Under Curve | 0.7618616199514456 | 0.7894162436548222| 0.6486592363716619 | 0.8622765393952769 | 0.8981736923416463
-Recall score | 0.9856521739130435 | 0.99 | 0.9978260869565218 | 0.841304347826087 | 0.8369565217391305
-Precision score | 0.9614079728583546 | 0.9656488549618321 | 0.9432799013563502 | 0.9882533197139939 | 0.9958613554061045
-Generic test<br>("markers are good";<br>"markers are not good") | Both predicted as Positive | Both as Predicted positive | Both predicted as Positive | Predicted correctly - Positive, Negative| Both predicted as Negative
+Accuracy Score | 0.9503404084901882 | 0.9583500200240288 | 0.9427312775330396 | 0.8470164197036444 | 0.8466159391269523
+Area Under Curve | 0.7618616199514456 | 0.7894162436548222| 0.6486592363716619 | 0.9007117634076363 | 0.8981736923416463
+Recall score | 0.9856521739130435 | 0.99 | 0.9978260869565218 | 0.8369565217391305 | 0.8369565217391305
+Precision score | 0.9614079728583546 | 0.9656488549618321 | 0.9432799013563502 | 0.9963768115942029 | 0.9958613554061045
+Generic test<br>("markers are good";<br>"markers are not good") | Both predicted as Positive | Both as Predicted positive | Both predicted as Positive | Predicted correctly - Positive, Negative| Predicted correctly - Positive, Negative
