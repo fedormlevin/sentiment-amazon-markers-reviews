@@ -2,6 +2,8 @@
 Sentiment Analysis of Reviews from Amazon (acrylic markers/pens)
 # Summary
 
+![image info](./truevspredicted.png)
+
 I am using logistic regression on imbalanced 2 label dataset of Amazon reviews to predict the sentiment of the review (e.g. Positive/Negative) <br>
 I add features, tune the model and compare the results at the end
 
@@ -190,7 +192,7 @@ Area Under Curve: 0.9007117634076363<br>
 Recall score: 0.8369565217391305<br>
 Precision score: 0.9963768115942029<br>
 
-![image info](./true vs predicted labels.png)
+
 
 The above model has strongest AUC and does predict generic labels correctly
 ```python
